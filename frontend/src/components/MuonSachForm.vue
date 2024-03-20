@@ -1,0 +1,144 @@
+
+<template>
+    <Form @submit="submit_data" >
+    <h1 class="">
+        Thông tin mượn sách
+    </h1>
+    <div class="form-group">
+        <label for="name">Tên sách</label>
+        <Field
+        name="tensach"
+        type="text"
+        class="form-control"
+        v-model="bookValue.tensach"
+        />
+        <ErrorMessage name="name" class="error-feedback" />
+    </div>
+    <div class="form-group">
+        <label for="name">Tên Đọc Giả</label>
+        <Field
+        name="hoten"
+        type="text"
+        class="form-control"
+        v-model="muonsach.hoten"
+        />
+        <ErrorMessage name="name" class="error-feedback" />
+
+        <label for="name">Ngày sinh</label>
+        <Field
+        name="ngaysinh"
+        type="date"
+        class="form-control"
+        v-model="muonsach.ngaysinh"
+        />
+        <ErrorMessage name="name" class="error-feedback" />
+
+        <label for="name">Giới tính</label>
+        <Field
+        name="phai"
+        type="text"
+        class="form-control"
+        v-model="muonsach.phai"
+        />
+        <ErrorMessage name="name" class="error-feedback" />
+
+        <label for="name">Địa chỉ</label>
+        <Field
+        name="diachi"
+        type="text"
+        class="form-control"
+        v-model="muonsach.diachi"
+        />
+        <ErrorMessage name="name" class="error-feedback" />
+
+        <label for="name">Số điện thoại</label>
+        <Field
+        name="sodienthoai"
+        type="text"
+        class="form-control"
+        v-model="muonsach.sodienthoai"
+        />
+        <ErrorMessage name="name" class="error-feedback" />
+
+        <!-- <label for="name">Mã sách</label> -->
+        <Field
+        name="masach"
+        type="hidden"
+        class="form-control"
+        v-model="bookValue._id"
+        />
+        <ErrorMessage name="name" class="error-feedback" />
+
+
+        <label for="name">Ngày mượn</label>
+        <Field
+        name="ngaymuon"
+        type="date"
+        class="form-control"
+        v-model="muonsach.ngaymuon"
+        />
+        <ErrorMessage name="name" class="error-feedback" />
+
+        <label for="name">Ngày trả</label>
+        <Field
+        name="ngaytra"
+        type="date"
+        class="form-control"
+        v-model="muonsach.ngaytra"
+        />
+        <ErrorMessage name="name" class="error-feedback" />
+    </div>
+    <div class="form-group">
+        <button class="btn btn-primary">Lưu</button>
+    </div>
+
+    </Form>
+</template>
+<script>
+import * as yup from "yup";
+import {Form, Field, ErrorMessage} from "vee-validate";
+
+export default{
+    components:{
+        Form,
+        Field,
+        ErrorMessage,
+    },
+
+    emit: ["submit:contact"],
+
+    props:{
+        id:{type: String, required: true},
+        book: {type: Object, required: true}
+    },
+
+    data(){
+        return{
+            bookValue : this.book,
+            muonsach:{
+                hoten: '',
+                ngaysinh: '',
+                phai: '',
+                diachi: '',
+                sodienthoai: '',
+                masach: this.id,
+                ngaymuon: '',
+                ngaytra: ''
+            },
+            
+        }
+    },
+    methods:{
+        submit_data(){
+            console.log(this.muonsach);
+        //     this.$emit('submit:contact',this.muonsach);
+        }
+    },
+};
+</script>
+<style scoped>
+@import "@/assets/form.css";
+h1{
+    text-align: center;
+}
+</style>
