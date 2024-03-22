@@ -9,7 +9,7 @@ export default {
 
 </script>
     <template>
-        <div id="app">
+        <div id="">
             <AppHeader />
 
             <div class="container mt-3">
@@ -20,7 +20,7 @@ export default {
     </template>
 <style>
     .page {
-    max-width: 400px;
-    margin: auto;
+        max-width: 400px;
+        margin: auto;
     }
 </style>

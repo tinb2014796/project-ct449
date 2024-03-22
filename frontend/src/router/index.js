@@ -3,9 +3,9 @@ import ContactBook from "@/views/ContactBook.vue";
 
 const routes = [
     {
-    path: "/",
-    name: "contactbook",
-    component: ContactBook,
+        path: "/",
+        name: "contactbook",
+        component: ContactBook,
     },
 
     {
@@ -29,12 +29,27 @@ const routes = [
     },
 
     {
+        path: "/theodoimuonsach",
+        name: "theodoimuonsach.home",
+        component: () => import("@/views/MuonSachHome.vue"),
+    },
+
+    {
         path: "/theodoimuonsach/:id",
-        name: "thoidoimuonsach",
-        component: () => import("@/views/MuonSach.vue"),
+        name: "theodoimuonsach.add",
+        component: () => import("@/views/MuonSachAdd.vue"),
         props: true 
-    }
-        
+    },
+
+    {
+        path: "/theodoimuonsach/chinhsua/:id",
+        name: "theodoimuonsach.edit",
+        component: () => import("@/views/MuonSachEdit.vue"),
+        props: true 
+    },
+    
+    
+
 ];
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),

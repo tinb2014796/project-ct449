@@ -1,4 +1,3 @@
-
 <script>
 export default {
     props: {
@@ -10,19 +9,27 @@ export default {
         <div>
             <div class="p-1">
             <strong>Tên Sách:</strong>
-                {{ contact.tensach }}
+                {{ contact.hoten }}
             </div>
             <div class="p-1">
             <strong>E-mail:</strong>
-                {{ contact.email }}
+                {{ contact.ngaysinh }}
             </div>
             <div class="p-1">
             <strong>Địa chỉ:</strong>
-                {{ contact.address }}
+                {{ contact.phai }}
             </div>
             <div class="p-1">
             <strong>Điện thoại:</strong>
-                {{ contact.phone }}
+                {{ contact.dichi }}
+            </div>
+            <div class="p-1">
+            <strong>Điện thoại:</strong>
+                {{ contact.ngaymuon }}
+            </div>
+            <div class="p-1">
+            <strong>Điện thoại:</strong>
+                {{ contact.ngaytra }}
             </div>
             <div class="p-1">
                 <strong>Liên hệ yêu thích:&nbsp;</strong>
@@ -30,7 +37,4 @@ export default {
                 <i v-else class="fas fa-times"></i>
             </div>
         </div>
-</template>
-
-
-<!-- hoten, ngaysinh, phai, daichi, sodienthoai, masach, ngaymuon, ngaytra -->
+    </template>

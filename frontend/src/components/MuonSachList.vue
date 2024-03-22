@@ -1,7 +1,7 @@
 <script>
 export default {
     props: {
-        contacts: { type: Array, default: [] },
+        MuonSachData: { type: Array, default: [] },
         activeIndex: { type: Number, default: -1 },
     },
     emits: ["update:activeIndex"],
@@ -16,12 +16,12 @@ export default {
         <ul class="list-group">
             <li
             class="list-group-item"
-            v-for="(contact, index) in contacts"
-            :key="contact._id"
+            v-for="(MuonSachData, index) in MuonSachData"
+            :key="MuonSachData._id"
             :class="{ active: index === activeIndex }"
             @click="updateActiveIndex(index)"
             >
-            {{ contact.tensach }} 
+            {{ MuonSachData.hoten }} {{ MuonSachData.masach }}
             </li>
         </ul>
     </template>

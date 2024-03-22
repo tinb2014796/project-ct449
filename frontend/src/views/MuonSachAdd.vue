@@ -25,7 +25,7 @@ export default{
         return {
             id : this.id,
             book: null,
-            message:"",
+            message: "",
         }
     },
     methods: {
