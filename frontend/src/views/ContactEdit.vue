@@ -1,5 +1,5 @@
 <template>
-    <div v-if="contact" class="page">
+    <div v-if="contact" class="page mt-5">
         <h4>Hiệu chỉnh Liên hệ</h4>
         <ContactForm
             :contact="contact"

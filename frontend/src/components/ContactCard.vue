@@ -13,16 +13,20 @@ export default {
                 {{ contact.tensach }}
             </div>
             <div class="p-1">
-            <strong>E-mail:</strong>
-                {{ contact.email }}
+            <strong>Đơn giá:</strong>
+                {{ contact.dongia }}
             </div>
             <div class="p-1">
-            <strong>Địa chỉ:</strong>
-                {{ contact.address }}
+            <strong>Số quyển:</strong>
+                {{ contact.soquyen }}
             </div>
             <div class="p-1">
-            <strong>Điện thoại:</strong>
-                {{ contact.phone }}
+            <strong>Năm xuất bản:</strong>
+                {{ contact.namxuatban }}
+            </div>
+            <div class="p-1">
+            <strong>Tác giả:</strong>
+                {{ contact.tacgia }}
             </div>
             <div class="p-1">
                 <strong>Liên hệ yêu thích:&nbsp;</strong>
@@ -32,5 +36,6 @@ export default {
         </div>
 </template>
 
+<!-- tensach, dongia, soquyen, namxuatban, tacgia -->
 
 <!-- hoten, ngaysinh, phai, daichi, sodienthoai, masach, ngaymuon, ngaytra -->

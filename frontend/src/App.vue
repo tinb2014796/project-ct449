@@ -9,7 +9,7 @@ export default {
 
 </script>
     <template>
-        <div id="">
+        <div class="container" id="">
             <AppHeader />
 
             <div class="container mt-3">

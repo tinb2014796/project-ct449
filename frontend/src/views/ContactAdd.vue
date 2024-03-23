@@ -1,7 +1,7 @@
 
 <template>
-    <div v-if="contact" class="page">
-        <h4>Hiệu chỉnh Liên hệ</h4>
+    <div v-if="contact" class="page mt-5">
+        <h4>Hiệu chỉnh Sách</h4>
         <ContactForm
             :contact="contact"
             @submit:contact="addContact"

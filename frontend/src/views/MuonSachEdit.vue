@@ -50,6 +50,7 @@
                     });
                 }
             },
+            
             async updateReader(data){
                 
                 try {
