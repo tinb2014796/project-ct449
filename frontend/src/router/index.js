@@ -48,6 +48,12 @@ const routes = [
         props: true 
     },
     
+    {
+        path: "/theodoimuonsach/chitiet/:id",
+        name: "theodoimuonsach.detail",
+        component: () => import("@/views/MuonSachDetail.vue"),
+        props: true 
+    },
     
 
 ];

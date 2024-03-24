@@ -1,24 +1,24 @@
 <template>
-    <div class="row">
+    <div class="row mt-5">
 
         <div class="col-10">
             <InputSearch  v-model="searchText"/>   
         </div>
 
-        <div class="mt-3 col-md-6">
+        <!-- <div class="mt-3 col-md-6">
             <h4>
                 Danh sách Mượn Sách
                 <i class="fas fa-address-book"></i>
             </h4>
-        </div>
+        </div> -->
 
-        <MuonSachList 
+        <!-- <MuonSachList 
             v-if="filteredContactsCount > 0"
             :MuonSachData="filteredContacts" 
             v-model:activeIndex="activeIndex"
-        />
+        /> -->
 
-        <div class="mt-3 row justify-content-around align-items-center">
+        <!-- <div class="mt-3 row justify-content-around align-items-center">
             <button class="btn btn-sm btn-primary" @click="refreshList()">
                 <i class="fas fa-redo"></i> Làm mới
             </button>
@@ -31,27 +31,44 @@
                 >
                 <i class="fas fa-trash"></i> Xóa tất cả
             </button>
-        </div>
+        </div> -->
 
-        <div class="mt-3 col-md-6">
-        <div v-if="activeContact">
-            <h4>
-            Chi tiết Phiếu Mượn
-            <i class="fas fa-address-card"></i>
-            </h4>
-            <MuonSachCard :contact="activeContact" />
-            <router-link
-                :to="{
-                name: 'theodoimuonsach.edit',
-                params: { id: activeContact._id },
-                }"
-            >
-                <span class="mt-2 badge badge-warning">
-                <i class="fas fa-edit"></i> Hiệu chỉnh</span>
-            </router-link>
-        </div>
-    </div>
+        
+            <div v-if="!activeContact" class="col-12">
+                <MuonSachList 
+                v-if="filteredContactsCount > 0"
+                :MuonSachData="filteredContacts" 
+                v-model:activeIndex="activeIndex"
+                />
+            </div>
+            <div v-else class="row">
 
+                <div class="col-7 p-2">
+                    <MuonSachList 
+                    v-if="filteredContactsCount > 0"
+                    :MuonSachData="filteredContacts" 
+                    v-model:activeIndex="activeIndex"
+                    />
+                </div>
+
+                <div class="mt-2 col-4 p-2" v-if="activeContact">
+                    <h4>
+                    Chi tiết Phiếu Mượn
+                    <i class="fas fa-address-card"></i>
+                    </h4>
+                    <MuonSachCard :contact="activeContact" />
+                    <router-link
+                        :to="{
+                        name: 'theodoimuonsach.edit',
+                        params: { id: activeContact._id },
+                        }"
+                    >
+                        <span class="mt-2 badge badge-warning">
+                        <i class="fas fa-edit"></i> Hiệu chỉnh</span>
+                    </router-link>
+                </div>
+
+            </div>
     </div>
 </template>
 <script>

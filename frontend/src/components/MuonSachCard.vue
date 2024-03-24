@@ -4,37 +4,60 @@ export default {
         contact: { type: Object, required: true },
     },
 };
+
+
 </script>
     <template>
-        <div>
-            <div class="p-1">
-            <strong>Tên Sách:</strong>
-                {{ contact.hoten }}
-            </div>
-            <div class="p-1">
-            <strong>E-mail:</strong>
-                {{ contact.ngaysinh }}
-            </div>
-            <div class="p-1">
-            <strong>Địa chỉ:</strong>
-                {{ contact.phai }}
-            </div>
-            <div class="p-1">
-            <strong>Điện thoại:</strong>
-                {{ contact.dichi }}
-            </div>
-            <div class="p-1">
-            <strong>Điện thoại:</strong>
-                {{ contact.ngaymuon }}
-            </div>
-            <div class="p-1">
-            <strong>Điện thoại:</strong>
-                {{ contact.ngaytra }}
-            </div>
-            <div class="p-1">
-                <strong>Liên hệ yêu thích:&nbsp;</strong>
-                <i v-if="contact.favorite" class="fas fa-check"></i>
-                <i v-else class="fas fa-times"></i>
-            </div>
-        </div>
+        
+            <div class="contact-info">
+    <div class="info-item">
+        <strong>Tên Sách:</strong>
+        <span>{{ contact.hoten }}</span>
+    </div>
+    <div class="info-item">
+        <strong>Ngày sinh:</strong>
+        <span>{{ contact.ngaysinh }}</span>
+    </div>
+    <div class="info-item">
+        <strong>Giới Tính:</strong>
+        <span>{{ contact.phai }}</span>
+    </div>
+    <div class="info-item">
+        <strong>Địa chỉ:</strong>
+        <span>{{ contact.diachi }}</span>
+    </div>
+    <div class="info-item">
+        <strong>Điện thoại:</strong>
+        <span>{{ contact.sodienthoai }}</span>
+    </div>
+    <div class="info-item">
+        <strong>Ngày mượn:</strong>
+        <span>{{ contact.ngaymuon }}</span>
+    </div>
+    <div class="info-item">
+        <strong>Ngày trả:</strong>
+        <span>{{ contact.ngaytra }}</span>
+    </div>
+</div>
     </template>
+    <style>
+
+.contact-info {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.info-item {
+    margin-bottom: 10px;
+}
+
+.info-item strong {
+    color: #333;
+    margin-right: 10px;
+}
+
+.info-item span {
+    color: #666;
+}</style>
