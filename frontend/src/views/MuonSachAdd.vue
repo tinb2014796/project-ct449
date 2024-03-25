@@ -3,7 +3,7 @@
         <h4>Hiệu chỉnh Liên hệ</h4>
         <ContactForm
             :book = "book"
-            :id="id"
+            :muonsach_valua="muonsach"
             @submit:contact="addReader"
         />
     </div>
@@ -23,9 +23,11 @@ export default{
     },
     data(){
         return {
-            id : this.id,
+           
             book: null,
             message: "",
+            muonsach:{}
+
         }
     },
     methods: {

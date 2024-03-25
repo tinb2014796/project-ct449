@@ -1,7 +1,7 @@
 
 <template>
     <Form @submit="submit_data" 
-    :validation-schema = 'MuonSachFormSchema'>
+    :validation-schema = "MuonSachFormSchema">
     <h1 class="">
         Thông tin mượn sách
     </h1>
@@ -116,9 +116,8 @@ export default{
     emits: ["submit:contact"],
 
     props:{
-        id:{type: String, required: true},
-        book: {type: Object, required: true},
-        muonsach:{type: Object, required: true}
+        book: {type: Object},
+        muonsach_valua:{type: Object, required: true}
     },
 
     data(){
@@ -162,7 +161,7 @@ export default{
 
         return{
             bookValue : this.book,
-            muonsach: this.muonsach,
+            muonsach: this.muonsach_valua,
             MuonSachFormSchema
         }
     },
@@ -181,7 +180,6 @@ export default{
 
     methods:{
         submit_data(){
-            console.log(this.muonsach);
             this.$emit('submit:contact',this.muonsach);
         },
         formatDate(date) {

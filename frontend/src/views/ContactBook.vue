@@ -37,6 +37,16 @@
                     <span class="mt-2 badge badge-warning">
                     <i class="fas fa-edit"></i> Hiệu chỉnh</span>
                 </router-link>
+
+                <router-link
+                        :to="{
+                        name: 'theodoimuonsach.add',
+                        params: { id: activeContact._id },
+                        }"
+                    >
+                        <span class="mt-2 badge badge-warning">
+                        <i class="fas fa-edit"></i>Tạo phiếu mượn</span>
+                    </router-link>
             </div>
         </div>
     </div>

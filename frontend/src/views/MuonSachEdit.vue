@@ -3,7 +3,7 @@
         <p>{{ message }}</p>
         <MuonSachForm
             :book = "Sach"
-            :muonsach="MuonSachData"
+            :muonsach_valua="MuonSachData"
             @submit:contact="updateReader"
         />
         
@@ -36,7 +36,6 @@
                 try{
                     this.MuonSachData= await MuonSachService.get(id);
                     this.Sach= await SachService.get(this.MuonSachData.masach);
-                    console.log(this.Sach);
                 }catch(error){
                     console.log(error);
                 // Chuyển sang trang NotFound đồng thời giữ cho URL không đổi
