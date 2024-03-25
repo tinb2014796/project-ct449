@@ -1,11 +1,24 @@
 <template>
-    <div class="page">
+    <div v-if="check_book" class="page">
         <h4>Hiệu chỉnh Liên hệ</h4>
         <ContactForm
             :book = "book"
+            :id="id"
             :muonsach_valua="muonsach"
             @submit:contact="addReader"
         />
+    </div>
+    
+    <div v-else class="mt-5 alert alert-custom" >
+        <h5 class="mt-2 mr-2">Vui lòng lựa chọn sách trước !</h5>
+        <router-link
+                    :to="{
+                    name: 'contactbook', 
+                    }"
+                >
+                    <span class="mt-2 badge badge-warning">
+                    <i class="fas fa-edit"></i>Chọn</span>
+        </router-link>
     </div>
     <p>{{ message }}</p>
 </template>
@@ -23,7 +36,8 @@ export default{
     },
     data(){
         return {
-           
+            check_book: false,
+            id: this.id,
             book: null,
             message: "",
             muonsach:{}
@@ -41,10 +55,13 @@ export default{
         },
 
         async getBook(id){
+           if(id != null){
             try{
                 this.book = await ContactService.get(id);
+                this.check_book = true
             }catch(error){
                 console.log(error)
+            }
             }
         }
     },
@@ -54,3 +71,10 @@ export default{
     },
 }
 </script>
+
+<style>
+    .alert-custom{
+        display: flex;
+        justify-content: center;
+    }
+</style>

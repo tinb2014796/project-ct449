@@ -1,6 +1,7 @@
 
 <template>
-    <Form @submit="submit_data" 
+    <Form
+    @submit="submit_data" 
     :validation-schema = "MuonSachFormSchema">
     <h1 class="">
         Thông tin mượn sách
@@ -30,7 +31,7 @@
         name="ngaysinh"
         type="date"
         class="form-control"
-        v-model="formattedNgaySinh"
+        v-model="muonsach.ngaysinh"
         />
         <ErrorMessage name="ngaysinh" class="error-feedback" />
 
@@ -68,13 +69,13 @@
         <ErrorMessage name="sodienthoai" class="error-feedback" />
 
         <!-- <label for="name">Mã sách</label> -->
-        <Field
+        <!-- <Field
         name="masach"
-        type="hidden"
+        type=""
         class="form-control"
-        v-model="bookValue._id"
+        v-model="muonsach.masach"
         />
-        <ErrorMessage name="name" class="error-feedback" />
+        <ErrorMessage name="masach" class="error-feedback" /> -->
 
 
         <label for="name">Ngày mượn</label>
@@ -82,7 +83,7 @@
         name="ngaymuon"
         type="date"
         class="form-control"
-        v-model="formattedMuonDate"
+        v-model="muonsach.ngaymuon"
         />
         <ErrorMessage name="ngaymuon" class="error-feedback" />
 
@@ -91,14 +92,23 @@
         name="ngaytra"
         type="date"
         class="form-control"
-        v-model="formattedTraDate"
+        v-model="muonsach.ngaytra"
         />
         <ErrorMessage name="ngaytra" class="error-feedback" />
     </div>
+
     <div class="form-group">
         <button class="btn btn-primary">Lưu</button>
+        <button
+        v-if="muonsach._id"
+        type="button"
+        class="ml-2 btn btn-danger"
+        @click="delete_data"
+        >
+        Xóa
+        </button>
     </div>
-
+   
     </Form>
 </template>
 <script>
@@ -113,9 +123,10 @@ export default{
         ErrorMessage,
     },
 
-    emits: ["submit:contact"],
+    eemits: ["submit:contact","delete:contact"],
 
     props:{
+        id:{type:String, required: true},
         book: {type: Object},
         muonsach_valua:{type: Object, required: true}
     },
@@ -147,45 +158,49 @@ export default{
                 ),
             ngaysinh: yup
             .date()
-            .min(new Date(Date.now()-3650),"Không hợp lệ")
             .max(new Date(Date.now()),"Không hợp lệ"),
             diachi: yup.string().max(50, "Địa chỉ tối đa 50 ký tự."),
             sodienthoai: yup
             .string()
-            .matches(
-            /((09|03|07|08|05)+([0-9]{8}) \b)/g,
-            "Số điện thoại không hợp lệ."
-            ),
+            // .matches(
+            // /((09|03|07|08|05)+([0-9]{8}) \b)/g,
+            // "Số điện thoại không hợp lệ."
+            // ),
             
         })
 
         return{
+            _id: this.id,
             bookValue : this.book,
             muonsach: this.muonsach_valua,
             MuonSachFormSchema
         }
     },
-
-    computed: {
-        formattedMuonDate() {
-            return this.formatDate(this.muonsach.ngaymuon);
-        },
-        formattedTraDate() {
-            return this.formatDate(this.muonsach.ngaytra);
-        },
-        formattedNgaySinh(){
-            return this.formatDate(this.muonsach.ngaysinh);
-        },
-    },
-
     methods:{
         submit_data(){
             this.$emit('submit:contact',this.muonsach);
         },
+        delete_data(){
+            this.$emit('delete:contact',this.muonsach.id);
+        },
         formatDate(date) {
             return moment(date).format("YYYY-MM-DD");
         },
+
+        formattedDate() {
+            this.muonsach.ngaymuon = this.formatDate(this.muonsach.ngaymuon);
+            this.muonsach.ngaysinh = this.formatDate(this.muonsach.ngaysinh);
+            this.muonsach.ngaytra = this.formatDate(this.muonsach.ngaytra);
+        },
+        addMaSach(){
+            this.muonsach.masach= this._id;
+        },
     },
+
+    created(){
+        this.formattedDate();
+        this. addMaSach();
+    }
 };
 </script>
 <style scoped>

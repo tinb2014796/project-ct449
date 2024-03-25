@@ -35,8 +35,15 @@ const routes = [
     },
 
     {
-        path: "/theodoimuonsach/:id",
+        path: "/theodoimuonsach/taophieu/:id",
         name: "theodoimuonsach.add",
+        component: () => import("@/views/MuonSachAdd.vue"),
+        props: true 
+    },
+
+    {
+        path: "/theodoimuonsach/taophieu",
+        name: "theodoimuonsach.add.notsach",
         component: () => import("@/views/MuonSachAdd.vue"),
         props: true 
     },

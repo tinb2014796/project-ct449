@@ -5,6 +5,7 @@
             :book = "Sach"
             :muonsach_valua="MuonSachData"
             @submit:contact="updateReader"
+            @delete:contact="deleteReader"
         />
         
     </div>
@@ -59,6 +60,16 @@
                     console.log(error);
                 }
       
+            },
+            async deleteReader(){
+                if (confirm("Bạn muốn xóa Liên hệ này?")) {
+                try {
+                    await MuonSachService.delete(this.MuonSachData._id);
+                    this.$router.push({ name: "contactbook" });
+                } catch (error) {
+                    console.log(error);
+                }
+            }
             }
         },
         created() {
