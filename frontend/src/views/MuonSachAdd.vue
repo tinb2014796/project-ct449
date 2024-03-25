@@ -48,7 +48,8 @@ export default{
         async addReader(data){
             try{
                 await MuonSachService.create(data);
-                this.message = "Tạo phiếu thành công";
+                confirm("Sách đã được thêm thành công!")
+                this.$router.push({ name: "contactbook" });
             }catch(error){
                  console.log(error);
             }

@@ -55,14 +55,15 @@
                 
                 try {
                     await MuonSachService.update(this.MuonSachData._id, data);
-                    this.message = "Chỉnh sửa thành công !"
+                    confirm("Cập nhật thành công");
+                    this.$router.push({ name: "contactbook" });
                 } catch (error) {
                     console.log(error);
                 }
       
             },
             async deleteReader(){
-                if (confirm("Bạn muốn xóa Liên hệ này?")) {
+                if (confirm("Bạn muốn xóa phiếu theo dỗi này?")) {
                 try {
                     await MuonSachService.delete(this.MuonSachData._id);
                     this.$router.push({ name: "contactbook" });
