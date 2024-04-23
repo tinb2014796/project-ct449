@@ -54,7 +54,16 @@
         />
         <ErrorMessage name="tacgia" class="error-feedback" />
     </div>
-
+    <div class="form-group">
+        <label for="phone">Ảnh sách</label>
+       <Field
+        name="image"
+        type="text"
+        class="form-control"
+        v-model="contactLocal.image"
+        />
+        <ErrorMessage name="tacgia" class="error-feedback" />
+    </div>
     <div class="form-group">
         <button class="btn btn-primary">Lưu</button>
         <button

@@ -1,14 +1,23 @@
 <script>
+import contactService from '@/services/contact.service';
 export default {
     props: {
         contacts: { type: Array, default: [] },
         activeIndex: { type: Number, default: -1 },
     },
-    emits: ["update:activeIndex"],
+    emits: ["update:activeIndex","delete:activeIndex" ],
     methods: {
         updateActiveIndex(index) {
             this.$emit("update:activeIndex", index);
         },
+        async delete(index){
+            if(index){
+                confirm("Bạn có chắc chắn muốn xóa sách này ?")
+                const res = await contactService.delete(index);
+                console.log(res)
+            }
+            
+        }
     }
 };
 </script>
@@ -53,6 +62,9 @@ export default {
             <td>
             <button class="btn btn-primary"  @click="updateActiveIndex(index)">
                 Chi tiết
+            </button>
+            <button class="btn btn-danger ml-3"  @click="delete(contact._id)">
+                Xóa
             </button>
             </td>
         </tr>  
