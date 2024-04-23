@@ -60,6 +60,7 @@ export default{
             if (confirm("Bạn muốn xóa Liên hệ này?")) {
                 try {
                     await ContactService.delete(this.contact._id);
+                    confirm("Xóa thành công");
                     this.$router.push({ name: "contactbook" });
                 } catch (error) {
                     console.log(error);

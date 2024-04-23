@@ -1,10 +1,16 @@
 <script>
+
 export default {
     props: {
         MuonSachData: { type: Array, default: [] },
         activeIndex: { type: Number, default: -1 },
     },
     emits: ["update:activeIndex"],
+    data(){
+        return {
+            sach:null,
+        }
+    },
     methods: {
         updateActiveIndex(index) {
             this.$router.push({
@@ -14,7 +20,7 @@ export default {
                 }
             })
         },
-    }
+    },
 };
 </script>
     <template>
@@ -51,7 +57,7 @@ export default {
         >
         
             <th scope="row" >{{ index +1 }}</th>
-            <td>{{ MuonSachData.masach }} </td>
+            <td>{{ MuonSachData.tensach }} </td>
             <td>{{ MuonSachData.hoten }}</td>
             <td>{{ MuonSachData.ngaymuon }}</td>
             <td>{{ MuonSachData.ngaytra }}</td>

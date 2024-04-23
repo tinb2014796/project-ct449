@@ -37,6 +37,10 @@
                 try{
                     this.MuonSachData= await MuonSachService.get(id);
                     this.Sach= await SachService.get(this.MuonSachData.masach);
+                    if(this.Sach == null){
+                        confirm("Không thể thực hiện")
+                        this.$router.push({ name:"theodoimuonsach.home" })
+                    }
                 }catch(error){
                     console.log(error);
                 // Chuyển sang trang NotFound đồng thời giữ cho URL không đổi

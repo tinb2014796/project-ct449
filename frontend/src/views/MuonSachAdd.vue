@@ -3,7 +3,6 @@
         <h4>Hiệu chỉnh Liên hệ</h4>
         <ContactForm
             :book = "book"
-            :id="id"
             :muonsach_valua="muonsach"
             @submit:contact="addReader"
         />
@@ -59,12 +58,18 @@ export default{
            if(id != null){
             try{
                 this.book = await ContactService.get(id);
-                this.check_book = true
+                
+                if(this.book.soquyen == 0){
+                    confirm("Không thể thực hiện");
+                    this.$router.push({ name: "contactbook" });
+                }
+                this.check_book = true;
             }catch(error){
                 console.log(error)
             }
             }
         }
+        
     },
     created() {
         this.getBook(this.id);

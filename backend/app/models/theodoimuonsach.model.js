@@ -9,6 +9,7 @@ const theodoiShema = new Schema({
     diachi: String,
     sodienthoai: String,
     masach: String,
+    tensach: String,
     ngaymuon: Date,
     ngaytra: Date
 });

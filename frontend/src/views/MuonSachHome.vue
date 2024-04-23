@@ -4,36 +4,6 @@
         <div class="col-10">
             <InputSearch  v-model="searchText"/>   
         </div>
-
-        <!-- <div class="mt-3 col-md-6">
-            <h4>
-                Danh sách Mượn Sách
-                <i class="fas fa-address-book"></i>
-            </h4>
-        </div> -->
-
-        <!-- <MuonSachList 
-            v-if="filteredContactsCount > 0"
-            :MuonSachData="filteredContacts" 
-            v-model:activeIndex="activeIndex"
-        /> -->
-
-        <!-- <div class="mt-3 row justify-content-around align-items-center">
-            <button class="btn btn-sm btn-primary" @click="refreshList()">
-                <i class="fas fa-redo"></i> Làm mới
-            </button>
-            <button class="btn btn-sm btn-success" @click="goToAdd">
-                <i class="fas fa-plus"></i> Thêm mới
-            </button>
-            <button
-                class="btn btn-sm btn-danger"
-                @click="removeAllContacts"
-                >
-                <i class="fas fa-trash"></i> Xóa tất cả
-            </button>
-        </div> -->
-
-        
             <div v-if="!activeContact" class="col-12">
                 <MuonSachList 
                 v-if="filteredContactsCount > 0"
@@ -102,8 +72,8 @@
         // Chuyển các đối tượng contact thành chuỗi để tiện cho tìm kiếm.
             contactStrings() {
                 return this.contacts.map((MuonSachData) => {
-                    const {hoten, ngaysinh, phai, daichi, sodienthoai, masach, ngaymuon, ngaytra } = MuonSachData;
-                    return [hoten, ngaysinh, phai, daichi, sodienthoai, masach, ngaymuon, ngaytra ].join("");
+                    const {hoten, ngaysinh, phai, daichi, sodienthoai, masach, tensach, ngaymuon, ngaytra } = MuonSachData;
+                    return [hoten, ngaysinh, phai, daichi, sodienthoai, masach, tensach, ngaymuon, ngaytra ].join("");
                 });
             },
         // Trả về các contact có chứa thông tin cần tìm kiếm.

@@ -30,7 +30,7 @@ export default {
                 type="button"
                 @click="submit"
                 >
-                    <i class="fas fa-search"></i> Tìm kiếm
+                <font-awesome-icon icon="magnifying-glass" /> Tìm kiếm
                 </button>
             </div>
         </div>

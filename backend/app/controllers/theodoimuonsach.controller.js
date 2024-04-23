@@ -1,12 +1,22 @@
 const ApiError = require("../api-error");
 const theoDoi = require("../models/theodoimuonsach.model");
+const sach = require("../models/sach.model");
 
 exports.create = async (req, res, next) => {
-
-    try {
-        const document = await theoDoi.create(req.body);
-        return res.send(document);
-    } catch (error) {
+    const sach_data = await sach.findById(req.body.masach);
+    if(sach_data.soquyen > 0){
+        try {
+            const soquyen_update = sach_data.soquyen - 1;
+            const document = await theoDoi.create(req.body);
+            await sach.updateOne({_id : req.body.masach}, {soquyen:soquyen_update})
+            return res.send(document);
+        } catch (error) {
+            return next(
+                new ApiError(500, "An error occurred while creating the contact")
+            );
+        }
+    }
+    else {
         return next(
             new ApiError(500, "An error occurred while creating the contact")
         );
@@ -70,7 +80,7 @@ exports.update = async(req, res, next) => {
 
 exports.delete = async(req, res, next) => {
     try {
-        const document = await theoDoi.delete(req.params.id);
+        const document = await theoDoi.findByIdAndDelete(req.params.id);
         if (!document) {
             return next(new ApiError(404, "Contact not found"));
         }

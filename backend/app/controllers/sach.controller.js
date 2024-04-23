@@ -69,7 +69,7 @@ exports.update = async(req, res, next) => {
 
 exports.delete = async(req, res, next) => {
     try {
-        await sach.findByIdAndDelete(req.params.id);
+        const document = await sach.findOneAndDelete(req.params.id);
         if (!document) {
             return next(new ApiError(404, "Contact not found"));
         }

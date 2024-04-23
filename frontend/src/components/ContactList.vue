@@ -43,6 +43,7 @@ export default {
             :key="contact._id"
             :class="{ active: index === activeIndex }"
             @click="updateActiveIndex(index)"
+            
         >
         
             <th scope="row" >{{ index +1 }}</th>

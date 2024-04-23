@@ -94,7 +94,8 @@ export default{
             .required("Đơn giá không được để trống!"),
             soquyen: yup
             .number()
-            .required("Vui lòng nhập số lượng!"),
+            .required("Vui lòng nhập số lượng!")
+            .min(0,"Không hợp lệ"),
             namxuatban: yup
             .number()
             .required("Vui lòng nhập năm xuất bản!")

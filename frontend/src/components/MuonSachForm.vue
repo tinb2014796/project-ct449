@@ -15,8 +15,7 @@
         v-model="bookValue.tensach"
         />
         <ErrorMessage name="name" class="error-feedback" />
-    </div>
-    <div class="form-group">
+
         <label for="name">Tên Đọc Giả</label>
         <Field
         name="hoten"
@@ -42,13 +41,13 @@
         class="form-control"
         v-model="muonsach.phai"
         /> -->
-        <select v-model="muonsach.phai">
+        <select name="phai" v-model="muonsach.phai">
             <option disabled value="">chọn</option>
             <option>Nam</option>
             <option>Nữ</option>
             <option>Khác</option>
         </select>
-        <ErrorMessage name="name" class="error-feedback" />
+        <ErrorMessage name="phai" class="error-feedback" />
 
         <label for="name">Địa chỉ</label>
         <Field
@@ -126,7 +125,6 @@ export default{
     eemits: ["submit:contact","delete:contact"],
 
     props:{
-        id:{type:String, required: true},
         book: {type: Object},
         muonsach_valua:{type: Object, required: true}
     },
@@ -170,7 +168,6 @@ export default{
         })
 
         return{
-            _id: this.id,
             bookValue : this.book,
             muonsach: this.muonsach_valua,
             MuonSachFormSchema
@@ -193,7 +190,8 @@ export default{
             this.muonsach.ngaytra = this.formatDate(this.muonsach.ngaytra);
         },
         addMaSach(){
-            this.muonsach.masach= this._id;
+            this.muonsach.masach = this.bookValue._id;
+            this.muonsach.tensach=this.book.tensach;
         },
     },
 
